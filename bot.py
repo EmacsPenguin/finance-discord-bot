@@ -17,9 +17,11 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if message.content.startswith('!finance'):
+    if message.content.startswith('$finance'):
         msg = message.content.split(" ")
         await message.channel.send(price_get(msg[1]))
+    elif message.content.startswith('$help'):
+        await message.channel.send("Finance is a discord bot that will pull the price of stocks from yahoo finance.\nTo use it say $finance <stock symbol>.\nAn example of this is $finance amd.\nRemember you have to use the stock symbol not the company name so you can use $finance fb, but not $finance facebook")
 
 
-client.run('PUT TOKEN HERE')
+client.run('TOKEN HERE')
